@@ -71,7 +71,7 @@
     <br>
     </form>
     <br>
-    <button type ="submit" onclick="addName(list)" class="btn btn-primary">Assign</button>
+    <button type ="submit" onclick="addName(list)" class="btn btn-primary">Insert</button>
   
    
     <ul id="list"></ul>
@@ -91,6 +91,8 @@
     </script>
     
   </div>
+  
+  
     <div class="row listName">
       <ul class="list-group col-6 list-inline mx-auto justify-content-center listName">
       </ul>
@@ -101,13 +103,22 @@
       <button type="button" class="btn btn-primary" onclick="addName">Assign</button>
     </div>-->
 
+    <div class ="inputForm col-4 mx-auto justify-content-center">
+        <div class="text-center">
+      <button type ="submit" onclick="addNameList()" class="btn btn-primary">Assign</button>
+      </div>
+  
+
+    </div>
+
+
     <div class="row">
       <div class="col-xs-4 col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h2>Team 1</h2>
           </div>
-          <ul class="list-group">
+          <ul class="team">
           
           </ul>
         </div>
@@ -117,7 +128,7 @@
           <div class="panel-heading">
             <h2>Team 2</h2>
           </div>
-          <ul class="list-group">
+          <ul class="team">
                       
           </ul>
         </div>
@@ -127,21 +138,45 @@
           <div class="panel-heading">
             <h2>Team 3</h2>
           </div>
-          <ul class="list-group">
+          <ul class="team">
            
-          </ul>
-        </div>
+        </ul>
       </div>
     </div>
+  </div>
+
 
 
      
-    </div>
+  </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script></script>
+    <script>
+
+      function addNameList(){
+        //1) prendere un valore dalla lista dei disponibili
+        let selectedLi = document.querySelector("#list li")
+        //2) prendere un riferimento casuale di una delle squadre
+        let teams = document.querySelectorAll(".team")
+        let randomTeam = Math.floor(Math.random() * teams.length)
+        //3) aggiungere un nuovo elemento con il nome all'interno della squadra
+        teams[randomTeam].innerHTML += "<li>" + selectedLi.innerText + "</li>"
+        //4) eliminare l'elemento usato
+        selectedLi.remove()
+      }
+    //   function addNameList(list-group1){
+    // let text = "";
+    // let inputs = document.querySelectorAll("list-group1");
+    // for (var i = 0; i < inputs.length; i++) {
+    //     text += inputs[i].value;
+    // }
+    // let li = document.createElement("li");
+    // let name = document.createTextNode(text);
+    // li.appendChild(name);
+    // document.getElementById("list").appendChild(li);}
+    </script>
   </body>
 </html>
